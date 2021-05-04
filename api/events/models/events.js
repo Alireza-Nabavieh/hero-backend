@@ -3,12 +3,12 @@ const slugify = require('slugify');
 module.exports = {
   lifecycles: {
     beforeCreate: async (data) => {
-      if (data.name) { 
+      if (data.name && !data.slug) { 
         data.slug = slugify(data.name, {lower:false});
       }
     },
     beforeUpdate: async (params, data) => {
-      if (data.name) {
+      if (data.name && !data.slug) {
         data.slug = slugify(data.name, {lower:false});
       }
     },
