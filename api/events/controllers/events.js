@@ -40,7 +40,7 @@ module.exports = {
         });
     
         if (!events) {
-          return ctx.unauthorized(`You can't update this entry`);
+          return ctx.unauthorized(`شما نمی‌توانید این رکورد را ویرایش کنید`);
         }
     
         if (ctx.is('multipart')) {
@@ -67,7 +67,7 @@ module.exports = {
         });
     
         if (!events) {
-          return ctx.unauthorized(`You can't delete this entry`);
+          return ctx.unauthorized(`شما نمی‌توانید این رکورد را حذف کنید`);
         }
     
         const entity = await strapi.services.events.delete({ id });
@@ -83,7 +83,7 @@ module.exports = {
         const user=ctx.state.user
 
         if(!user){
-            return ctx.badRequest(null, [{ messages:[{id:"No Authoization header was found "}]},]);
+            return ctx.badRequest(null, [{ messages:[{id:"دسترسی ندارید"}]},]);
         }
 
         const data =await strapi.services.events.find({user: user.id})
